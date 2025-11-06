@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khóa Học AI Toàn Năng Cho Giáo Viên</title>
     <style>
-        /* * CSS ĐÃ ĐƯỢC THIẾT KẾ LẠI DỰA TRÊN MẪU LOGISCOOL
+        /* * CSS ĐÃ ĐƯỢC THIẾT KẾ LẠI DỰA TRÊN MẪU LOGISCOOL VÀ YÊU CẦU MỚI
          */
 
         :root {
@@ -18,6 +18,8 @@
             --border-color: #e0e0e0;
             --white: #ffffff;
             --shadow: 0 5px 15px rgba(0,0,0,0.08); /* Bóng đổ nhẹ */
+            --cta-red: #e63946; /* Màu đỏ nổi bật mới cho CTA */
+            --cta-red-hover: #cc2e3b;
         }
 
         * {
@@ -31,7 +33,6 @@
         }
 
         body {
-            /* Font chữ hiện đại, sạch sẽ như Logiscool */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.7;
             color: var(--text-color);
@@ -64,48 +65,84 @@
             color: var(--light-text);
         }
 
-        /* * NÚT CTA THEO PHONG CÁCH LOGISCOOL (QUAN TRỌNG)
-         * Bo tròn hình "viên thuốc", màu xanh lá
+        /* * NÚT CTA THEO PHONG CÁCH LOGISCOOL
+         * Các nút CTA chính (ngoại trừ nút submit cuối cùng) màu đỏ
          */
         .cta-button {
             display: inline-block;
-            background-color: var(--primary-color);
+            background-color: var(--cta-red); /* Màu đỏ mới */
             color: var(--white);
-            padding: 15px 35px; /* Dài hơn một chút */
+            padding: 15px 35px;
             font-size: 1.1rem;
             font-weight: 700;
             text-decoration: none;
-            border-radius: 50px; /* Bo tròn hoàn toàn */
+            border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(152, 197, 71, 0.4);
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
             text-transform: uppercase;
             border: none;
             cursor: pointer;
         }
 
         .cta-button:hover {
-            background-color: #89b040; /* Đậm hơn khi hover */
+            background-color: var(--cta-red-hover); /* Đậm hơn khi hover */
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(152, 197, 71, 0.5);
+            box-shadow: 0 6px 15px rgba(230, 57, 70, 0.5);
         }
 
-        /* --- KHU VỰC 1: HERO --- */
+        /* --- KHU VỰC 1: HERO (CÓ NỀN) --- */
         #hero {
             text-align: center;
-            padding: 60px 20px;
-            background-color: var(--light-gray); /* Nền xám nhạt */
+            padding: 100px 20px; /* Thêm padding trên dưới */
+            position: relative;
+            overflow: hidden; /* Quan trọng để ảnh nền không tràn */
+            color: var(--white); /* Chữ màu trắng trên nền tối */
+        }
+        
+        #hero::before { /* Lớp phủ mờ */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Lớp phủ màu đen trong suốt */
+            z-index: 1;
+        }
+
+        #hero::after { /* Ảnh nền */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1546410531-ef35ac755c5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80'); /* Thay bằng ảnh của bạn */
+            background-size: cover;
+            background-position: center;
+            filter: blur(2px); /* Làm mờ ảnh nền */
+            z-index: 0;
+            transform: scale(1.02); /* Đảm bảo không có viền trắng do blur */
+        }
+
+        #hero > * { /* Đảm bảo tất cả nội dung nằm trên lớp phủ */
+            position: relative;
+            z-index: 2;
         }
 
         #hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.8rem; /* Lớn hơn */
+            color: var(--white);
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         #hero .subtitle {
-            font-size: 1.4rem;
-            color: var(--dark-color); /* Đổi màu cho dễ đọc hơn */
-            font-weight: 500;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
+            font-size: 1.5rem;
+            color: var(--white); /* Đổi màu chữ trắng */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            max-width: 800px;
+            margin: 0 auto 40px auto;
         }
 
         #hero .cta-button {
@@ -118,7 +155,8 @@
             gap: 30px;
             list-style: none;
             font-weight: 500;
-            color: var(--dark-color);
+            color: var(--white); /* Đổi màu chữ trắng */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
         }
 
         .sub-benefits li {
@@ -127,16 +165,53 @@
         }
 
         .sub-benefits li::before {
-            content: '✔'; /* Dùng icon check sạch sẽ */
+            content: '✔';
             position: absolute;
             left: 0;
             top: 0;
             color: var(--primary-color);
         }
-
-        /* --- KHU VỰC 2: NỖI ĐAU (DÙNG BỐ CỤC THẺ) --- */
-        #problem {
+        
+        /* --- KHU VỰC "ĐÃ NÓI VỀ KHÓA HỌC" (MỚI) --- */
+        #social-proof {
             background-color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #social-proof h3 {
+            font-size: 1.6rem;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+        }
+
+        .logos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .logo-item {
+            height: 60px; /* Chiều cao cố định cho logo */
+            width: auto;
+            max-width: 150px;
+            filter: grayscale(100%); /* Làm mờ logo */
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .logo-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* --- KHU VỰC 2: NỖI ĐAU --- */
+        #problem {
+            background-color: var(--light-gray); /* Đổi sang nền xám nhạt */
         }
         
         .problem-cards {
@@ -145,12 +220,11 @@
             justify-content: center;
         }
 
-        /* Thẻ "Card" như mẫu Logiscool */
         .problem-card {
             flex: 1;
             background: var(--white);
             border: 1px solid var(--border-color);
-            border-radius: 10px; /* Bo góc ít hơn */
+            border-radius: 10px;
             padding: 25px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
@@ -162,13 +236,13 @@
         }
 
         .problem-card h3 {
-            color: #e63946; /* Giữ màu đỏ cho 'nỗi đau' */
+            color: #e63946;
             font-size: 1.2rem;
         }
 
         /* --- KHU VỰC 3: GIẢI PHÁP --- */
         #solution {
-            background-color: var(--light-gray); /* Nền xám xen kẽ */
+            background-color: var(--white); /* Đổi sang nền trắng */
             text-align: center;
         }
 
@@ -176,7 +250,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark-color);
-            background: #e4f0d0; /* Nền xanh lá rất nhạt */
+            background: #e4f0d0;
             padding: 10px 20px;
             border-radius: 8px;
             display: inline-block;
@@ -192,7 +266,7 @@
 
         /* --- KHU VỰC 4: LỢI ÍCH --- */
         #benefits {
-            background-color: var(--white);
+            background-color: var(--light-gray); /* Đổi sang nền xám nhạt */
         }
 
         .benefit-list {
@@ -204,7 +278,7 @@
         .benefit-list li {
             font-size: 1.1rem;
             margin-bottom: 25px;
-            padding-left: 40px; /* Thêm khoảng cách */
+            padding-left: 40px;
             position: relative;
         }
         
@@ -230,11 +304,17 @@
             display: block;
             width: fit-content;
             margin: 20px auto 0 auto;
+            background-color: var(--cta-red); /* Màu đỏ */
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+        }
+        #benefits .cta-button:hover {
+            background-color: var(--cta-red-hover);
+            box-shadow: 0 6px 15px rgba(230, 57, 70, 0.5);
         }
 
-        /* --- KHU VỰC 5: TÍNH NĂNG (DÙNG BỐ CỤC THẺ) --- */
+        /* --- KHU VỰC 5: TÍNH NĂNG --- */
         #features {
-            background-color: var(--light-gray);
+            background-color: var(--white); /* Đổi sang nền trắng */
         }
 
         .modules {
@@ -249,7 +329,7 @@
             border-radius: 10px;
             padding: 30px;
             box-shadow: var(--shadow);
-            display: flex; /* Mới: Bố cục 2 cột */
+            display: flex;
             gap: 20px;
             align-items: flex-start;
         }
@@ -257,7 +337,7 @@
         .module-item h3 {
             color: var(--primary-color);
             margin: 0;
-            flex-basis: 30%; /* Cột tiêu đề chiếm 30% */
+            flex-basis: 30%;
             font-size: 1.3rem;
         }
 
@@ -265,30 +345,31 @@
             list-style: disc;
             margin-left: 20px;
             color: var(--light-text);
-            flex-basis: 70%; /* Cột nội dung 70% */
+            flex-basis: 70%;
         }
 
         /* --- KHU VỰC 6: ĐỐI TƯỢNG --- */
         #who-is-this-for {
-            background-color: var(--white);
+            background-color: var(--light-gray); /* Đổi sang nền xám nhạt */
         }
 
         .audience-list {
             list-style: none;
             max-width: 700px;
             margin: 0 auto;
-            display: flex; /* Flexbox cho các item */
-            flex-wrap: wrap; /* Cho phép xuống hàng */
+            display: flex;
+            flex-wrap: wrap;
             gap: 15px;
         }
 
         .audience-list li {
-            background: var(--light-gray);
+            background: var(--white); /* Đổi sang nền trắng */
             padding: 15px 20px 15px 45px;
             border-radius: 8px;
             position: relative;
             border: 1px solid var(--border-color);
-            flex: 1 1 300px; /* Tự động co dãn */
+            flex: 1 1 300px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Bóng nhẹ hơn */
         }
         
         .audience-list li::before {
@@ -301,7 +382,7 @@
 
         /* --- KHU VỰC 7: FINAL CTA --- */
         #final-cta {
-            background-color: var(--dark-color); /* Nền xanh than */
+            background-color: var(--dark-color);
             color: var(--white);
             text-align: center;
         }
@@ -317,7 +398,7 @@
             margin-right: auto;
         }
 
-        /* Hộp giá "nổi" lên trên nền */
+        /* ===== THAY ĐỔI ĐỂ LÀM NỔI BẬT HỘP GIÁ ===== */
         .pricing-box {
             background: var(--white);
             color: var(--text-color);
@@ -325,8 +406,20 @@
             border-radius: 10px;
             max-width: 500px;
             margin: 30px auto;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative; /* Cần thiết cho animation */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Áp dụng animation "rung" */
+            animation: pulse-effect 2.5s infinite ease-in-out;
         }
+
+        /* Dừng animation khi di chuột vào */
+        .pricing-box:hover {
+            animation-play-state: paused; /* Tạm dừng animation */
+            transform: scale(1.03); /* Giữ trạng thái phóng to */
+            box-shadow: 0 10px 35px rgba(230, 57, 70, 0.4); /* Giữ vầng sáng đỏ */
+        }
+        /* ===== KẾT THÚC THAY ĐỔI ===== */
         
         .pricing-box h3 {
             color: var(--dark-color);
@@ -360,7 +453,7 @@
         }
 
         .bonus-box h4 {
-            color: var(--primary-color); /* Màu xanh lá cho bonus */
+            color: var(--primary-color);
             font-size: 1.2rem;
         }
         
@@ -370,7 +463,7 @@
             margin: 0;
         }
         
-        /* --- CSS CHO FORM (Thiết kế sạch sẽ) --- */
+        /* --- CSS CHO FORM --- */
         
         #registration-form-container {
             background: var(--white);
@@ -405,7 +498,7 @@
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
-            border-radius: 8px; /* Bo góc nhẹ */
+            border-radius: 8px;
             font-size: 1rem;
             font-family: inherit;
             transition: all 0.3s ease;
@@ -417,12 +510,20 @@
             outline: none;
         }
 
-        /* Nút submit (dùng lại style .cta-button) */
+        /* Nút submit cuối cùng (Màu xanh lá - phân biệt với CTA đỏ) */
         .cta-button.final-submit[type="submit"] {
             width: 100%;
             margin-top: 10px;
             font-size: 1.2rem;
             padding: 15px;
+            background-color: var(--primary-color); /* Giữ màu xanh lá cho nút submit */
+            box-shadow: 0 4px 10px rgba(152, 197, 71, 0.4);
+        }
+        
+        .cta-button.final-submit[type="submit"]:hover {
+            background-color: #89b040;
+            box-shadow: 0 6px 15px rgba(152, 197, 71, 0.5);
+            transform: translateY(-3px);
         }
         
         .guarantee {
@@ -442,6 +543,27 @@
         
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
+            .container {
+                padding: 40px 15px;
+            }
+
+            #hero {
+                padding: 80px 15px;
+            }
+
+            #hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            #hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            h2.section-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
             .problem-cards {
                 flex-direction: column;
             }
@@ -456,16 +578,8 @@
                 gap: 15px;
             }
             
-            #hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2.section-title {
-                font-size: 1.8rem;
-            }
-
             .module-item {
-                flex-direction: column; /* Xếp chồng trên di động */
+                flex-direction: column;
                 gap: 10px;
             }
 
@@ -477,6 +591,32 @@
 
             .module-item ul {
                 flex-basis: auto;
+            }
+
+            .logos-grid {
+                gap: 20px;
+            }
+
+            .logo-item {
+                height: 50px;
+                max-width: 120px;
+            }
+        }
+
+        /* ===== THÊM MỚI: KEYFRAME CHO HIỆU ỨNG NỔI BẬT ===== */
+        @keyframes pulse-effect {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            }
+            50% {
+                transform: scale(1.03); /* Phóng to nhẹ */
+                /* Vầng sáng đỏ đồng bộ với màu giá */
+                box-shadow: 0 10px 35px rgba(230, 57, 70, 0.4); 
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             }
         }
 
@@ -496,6 +636,20 @@
             </ul>
         </div>
     </header>
+
+    
+<section id="social-proof">
+        <div class="container">
+            <h3>Khóa Học Này Đã Được Đánh Giá Cao Trên...</h3>
+            <div class="logos-grid">
+                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=VTV" alt="Logo VTV" class="logo-item">
+                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=VNExpress" alt="Logo VNExpress" class="logo-item">
+                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=Thanh+Niên" alt="Logo Thanh Niên" class="logo-item">
+                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=ZingNews" alt="Logo ZingNews" class="logo-item">
+                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=Giáo+Dục+Thời+Đại" alt="Logo Giáo Dục Thời Đại" class="logo-item">
+            </div>
+        </div>
+    </section>
 
     <main>
         <section id="problem">
@@ -621,7 +775,7 @@
 
                 <div id="registration-form-container">
                     
-                    <form id="dang-ky" action="https://formsubmit.co/thayco@email.com" method="POST"> 
+                    <form id="dang-ky" action="https://formsubmit.co/nguyenhoanghuy118@gmail.com" method="POST"> 
                         
                         <h3>Đăng Ký Ngay Để Giữ Chỗ</h3>
                         
