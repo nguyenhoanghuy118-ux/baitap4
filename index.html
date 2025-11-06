@@ -3,215 +3,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nông Sản Sạch - Tươi Ngon Từ Nông Trại Tới Bàn Ăn</title>
-    <meta name="description" content="Nông Sản Sạch cung cấp 100% rau củ quả hữu cơ, đạt chuẩn VietGAP, thu hoạch mỗi ngày và giao nhanh tận nhà chỉ trong 2 giờ.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+    <title>Khóa Học AI Toàn Năng Cho Giáo Viên</title>
+    <style>
+        /* CSS Biến & Thiết Lập Cơ Bản */
+        :root {
+            --primary-color: #007bff; /* Màu xanh dương chủ đạo */
+            --secondary-color: #ff6a00; /* Màu cam cho CTA */
+            --final-cta-color: #e63946; /* Màu đỏ nổi bật cho CTA cuối */
+            --dark-text: #333;
+            --light-text: #555;
+            --bg-light: #f9f9f9;
+            --border-color: #ddd;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--dark-text);
+            background-color: var(--white);
+        }
+
+        /* Container Chính */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Tiêu Đề Chung */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.3;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        h2.section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+
+        /* Nút Kêu Gọi Hành Động (CTA) */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 106, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background-color: #e05c00;
+            transform: translateY(-2px);
+        }
+
+        /* --- KHU VỰC 1: HERO --- */
+        #hero {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--bg-light);
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+
+        #hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        #hero .cta-button {
+            margin-bottom: 30px;
+        }
+
+        .sub-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            font-weight: 500;
+        }
+
+        .sub-benefits li {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .sub-benefits li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #28a745; /* Màu xanh lá */
+        }
+
+        /* --- KHU VỰC 2: NỖI ĐAU --- */
+        #problem {
+            background-color: var(--white);
+        }
+        
+        .problem-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .problem-card {
+            flex-basis: 300px;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .problem-card h3 {
+            color: var(--final-cta-color);
+            font-size: 1.2rem;
+        }
+
+        /* --- KHU VỰC 3: GIẢI PHÁP --- */
+        #solution {
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        #solution .course-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background: #e0eaff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        #solution p {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- KHU VỰC 4: LỢI ÍCH --- */
+        #benefits {
+            background-color: var(--white);
+        }
+
+        .benefit-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        .benefit-list li {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-left: 35px;
+            position: relative;
+        }
+        
+        .benefit-list li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+        }
+        
+        .benefit-list li h4 {
+            margin: 0;
+            color: var(--dark-text);
+        }
+        
+        .benefit-list li p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        #benefits .cta-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 0 auto;
+        }
+
+        /* --- KHU VỰC 5: TÍNH NĂNG --- */
+        #features {
+            background-color: var(--bg-light);
+        }
+
+        .modules {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .module-item {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .module-item h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .module-item ul {
+            list-style: disc;
+            margin-left: 20px;
+            color: var(--light-text);
+        }
+
+        /* --- KHU VỰC 6: ĐỐI TƯỢNG --- */
+        #who-is-this-for {
+            background-color: var(--white);
+        }
+
+        .audience-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .audience-list li {
+            background: var(--bg-light);
+            padding: 15px 20px 15px 45px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .audience-list li::before {
+            content: '🎯';
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* --- KHU VỰC 7: FINAL CTA --- */
+        #final-cta {
+            background-color: #3a4a6e; /* Màu xanh đậm */
+            color: var(--white);
+            text-align: center;
+        }
+
+        #final-cta .section-title, #final-cta h3, #final-cta h4 {
+            color: var(--white);
+        }
+
+        #final-cta p {
+            color: #eee;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-box {
+            background: var(--white);
+            color: var(--dark-text);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 30px auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .pricing-box h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+        
+        .pricing-box .limitation {
+            font-style: italic;
+            color: var(--final-cta-color);
+            font-weight: 500;
+        }
+
+        .pricing-box .old-price {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            color: var(--light-text);
+            margin: 10px 0 0 0;
+        }
+
+        .pricing-box .new-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--final-cta-color);
+            margin: 0 0 15px 0;
+        }
+        
+        .bonus-box {
+            border-top: 2px dashed var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .bonus-box h4 {
+            color: #28a745; /* Xanh lá */
+            font-size: 1.2rem;
+        }
+        
+        .bonus-box p {
+            color: var(--dark-text);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .cta-button.final {
+            background-color: var(--final-cta-color);
+            font-size: 1.5rem;
+            padding: 20px 40px;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
+        }
+        
+        .cta-button.final:hover {
+            background-color: #c9302c;
+        }
+
+        .guarantee {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 20px !important;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--dark-text);
+            color: #aaa;
+        }
+        
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .problem-cards {
+                flex-direction: column;
+            }
+            
+            .problem-card {
+                flex-basis: auto;
+            }
+            
+            .sub-benefits {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2.section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button.final {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+        }
+
+    </style>
 </head>
 <body>
 
-    <div class="announcement-bar">
-        Miễn phí vận chuyển cho đơn hàng đầu tiên!
-    </div>
-
-    <header>
+    <header id="hero">
         <div class="container">
-            <a href="#" class="logo">
-                <svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M43.3,13.8C41.8,10.6,38.8,8,35,8c-4.4,0-8,3.6-8,8c0,1.9,0.7,3.7,1.8,5.1l-15.1,9.9C13,29.9,12,28.1,12,26 c0-4.4,3.6-8,8-8c0.7,0,1.4,0.1,2,0.3l4-7.9C24.6,6.2,20.1,4,15,4C7.8,4,2,9.8,2,17c0,5.5,3.4,10.2,8.2,12.2l15.8-10.4 c0.9,1,2.1,1.9,3.5,2.4L22.9,43.4C22.2,43.2,21.4,43,20.5,43c-4.1,0-7.5,3.4-7.5,7.5S16.4,58,20.5,58s7.5-3.4,7.5-7.5 c0-0.6-0.1-1.2-0.2-1.8L44,22.3c1.6,1.2,3.6,2,5.8,2c5,0,9-4,9-9S54.8,6.3,49.8,6.3z" fill="#8BC34A" transform="scale(0.8) translate(5, -5)"/>
-                    <path d="M 45 25 L 60 15 L 75 25 L 75 40 L 45 40 Z" fill="#388E3C"/>
-                    <text x="85" y="32" font-family="Quicksand, sans-serif" font-size="18" font-weight="bold" fill="#333">Nông Sản Sạch</text>
-                </svg>
-            </a>
-            <nav>
-                <a href="#products" class="cta-button-secondary">Sản Phẩm</a>
-            </nav>
+            <h1>🐲 HẾT CẢNH SOẠN GIÁO ÁN ĐẾN KHUYA!</h1>
+            <p class="subtitle">Biến AI Thành Trợ Lý Thông Minh: Tự Động Hóa 80% Việc Hành Chính & Nâng Cấp Bài Giảng Lên 200%</p>
+            <a href="#final-cta" class="cta-button">ĐĂNG KÝ HỌC NGAY (Ưu đãi 50%)</a>
+            <ul class="sub-benefits">
+                <li>Học online 100%</li>
+                <li>Thực hành cầm tay chỉ việc</li>
+                <li>Áp dụng được ngay sau 3 ngày</li>
+            </ul>
         </div>
     </header>
 
     <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1 class="fade-in">Nông Sản Sạch: Trọn Vị Tươi Nguyên Từ Nông Trại Tới Bàn Ăn</h1>
-                <p class="fade-in">Cam kết 100% nông sản canh tác hữu cơ, không hóa chất, đạt chuẩn VietGAP. Thu hoạch tươi mới trong ngày và giao hàng siêu tốc để giữ trọn dinh dưỡng và hương vị nguyên bản.</p>
-                <a href="#products" class="cta-button fade-in">Xem Combo Tuần Này</a>
-            </div>
-        </section>
-
-        <section id="problem-solution" class="container">
-            <div class="problem-solution-content fade-in">
-                <h2>Bạn lo lắng về bữa ăn hàng ngày?</h2>
-                <p>Giữa muôn vàn lựa chọn, nỗi lo về thực phẩm bẩn, không rõ nguồn gốc và dư lượng hóa chất luôn hiện hữu. Sức khỏe gia đình là điều không thể đánh đổi.</p>
-                <h3>Nông Sản Sạch là giải pháp an tâm của bạn.</h3>
-                <p>Chúng tôi ra đời với sứ mệnh mang đến sự minh bạch và an toàn tuyệt đối cho bữa ăn Việt. An tâm lựa chọn, an tâm thưởng thức.</p>
-            </div>
-        </section>
-
-        <section id="features" class="container">
-            <div class="feature-item fade-in">
-                <i class="fas fa-leaf"></i>
-                <h3>100% Sạch & An Toàn</h3>
-                <p>Canh tác hữu cơ, không thuốc trừ sâu, có chứng nhận VietGAP/GlobalGAP rõ ràng.</p>
-            </div>
-            <div class="feature-item fade-in">
-                <i class="fas fa-qrcode"></i>
-                <h3>Nguồn Gốc Rõ Ràng</h3>
-                <p>Mỗi sản phẩm đều có mã QR để truy xuất tận nông trại, xem rõ ngày thu hoạch.</p>
-            </div>
-            <div class="feature-item fade-in">
-                <i class="fas fa-sun"></i>
-                <h3>Tươi Ngon Mỗi Ngày</h3>
-                <p>Thu hoạch trong ngày và giao ngay để giữ trọn vẹn dinh dưỡng và hương vị tự nhiên.</p>
-            </div>
-            <div class="feature-item fade-in">
-                <i class="fas fa-truck-fast"></i>
-                <h3>Giao Hàng Tiện Lợi</h3>
-                <p>Giao hàng siêu tốc trong 2 giờ tại nội thành. Đóng gói cẩn thận, bảo quản chuyên nghiệp.</p>
-            </div>
-        </section>
-
-        <section id="products" class="container">
-            <h2 class="section-title fade-in">Sản Phẩm Bán Chạy Nhất</h2>
-            <div class="product-grid">
-                <div class="product-card fade-in">
-                    <img src="https://placehold.co/600x400/8BC34A/ffffff?text=Hộp+Rau+Củ" alt="Hộp Rau Củ Gia Đình">
-                    <h3>Hộp Rau Củ Gia Đình</h3>
-                    <p>Đủ vitamin và chất xơ cho cả nhà trong 3-4 ngày.</p>
-                    <div class="price">250.000đ</div>
-                    <button class="cta-button">Thêm vào giỏ</button>
-                </div>
-                <div class="product-card fade-in">
-                    <img src="https://placehold.co/600x400/FF9800/ffffff?text=Combo+Trái+Cây" alt="Combo Trái Cây Nhập Khẩu">
-                    <h3>Combo Trái Cây Bổ Sung Vitamin</h3>
-                    <p>Các loại trái cây tươi ngon, giàu vitamin C tăng đề kháng.</p>
-                    <div class="price">320.000đ</div>
-                    <button class="cta-button">Thêm vào giỏ</button>
-                </div>
-                <div class="product-card fade-in">
-                    <img src="https://placehold.co/600x400/4CAF50/ffffff?text=Rau+Gia+Vị" alt="Bộ Rau Gia Vị">
-                    <h3>Bộ Rau Gia Vị Hữu Cơ</h3>
-                    <p>Hành, ngò, húng quế, tía tô... cho món ăn thêm tròn vị.</p>
-                    <div class="price">99.000đ</div>
-                    <button class="cta-button">Thêm vào giỏ</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="story">
-            <div class="container story-container">
-                <div class="story-image fade-in">
-                    <img src="https://placehold.co/800x600/a5d6a7/333333?text=Người+Sáng+Lập" alt="Người sáng lập Nông Sản Sạch">
-                </div>
-                <div class="story-content fade-in">
-                    <h2>Câu Chuyện Của Chúng Tôi</h2>
-                    <p>"Nông Sản Sạch bắt đầu từ chính căn bếp của gia đình tôi, từ nỗi trăn trở về một bữa ăn thực sự an toàn cho con nhỏ. Tôi đã quyết định rời thành phố, tìm về những vùng đất lành để xây dựng nên các nông trại tuân thủ nghiêm ngặt quy trình hữu cơ. Mỗi sản phẩm bạn cầm trên tay hôm nay, chính là tâm huyết và lời cam kết của chúng tôi về một tương lai khỏe mạnh hơn cho người Việt."</p>
-                    <p><strong>- Anh Nguyễn Văn An, Người sáng lập -</strong></p>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials" class="container">
-            <h2 class="section-title fade-in">Khách Hàng Nói Gì Về Chúng Tôi</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card fade-in">
-                    <p>"Từ ngày biết đến Nông Sản Sạch, mình hoàn toàn yên tâm về bữa ăn cho cả nhà. Rau rất tươi, ngọt và giao hàng cực nhanh."</p>
-                    <div class="customer">
-                        <img src="https://placehold.co/100x100/e0e0e0/333333?text=KH" alt="Chị Minh Anh">
-                        <span>Chị Minh Anh, Quận 3, TP.HCM</span>
+        <section id="problem">
+            <div class="container">
+                <h2 class="section-title">😥 Thầy Cô có đang 'NGỘP' trong những vấn đề này?</h2>
+                <div class="problem-cards">
+                    <div class="problem-card">
+                        <h3>KIỆT SỨC VÌ "NÚI" VIỆC KHÔNG TÊN</h3>
+                        <p>Mỗi tuần mất hàng chục giờ cho việc soạn giáo án, chấm bài, nhập điểm, làm báo cáo... Thời gian đâu để nghỉ ngơi và sáng tạo?</p>
                     </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p>"Mình rất thích dịch vụ truy xuất nguồn gốc bằng mã QR. Rất minh bạch và chuyên nghiệp. Sẽ tiếp tục ủng hộ shop lâu dài."</p>
-                    <div class="customer">
-                         <img src="https://placehold.co/100x100/e0e0e0/333333?text=KH" alt="Anh Quốc Bảo">
-                        <span>Anh Quốc Bảo, Quận Cầu Giấy, Hà Nội</span>
+                    <div class="problem-card">
+                        <h3>BÀI GIẢNG "CHAY" KHIẾN HỌC SINH NGÁP NGẮN NGÁP DÀI</h3>
+                        <p>Thầy cô bí ý tưởng, chật vật trong việc thiết kế slide, tìm hình ảnh, làm video... khiến bài giảng khô khan và kém hấp dẫn.</p>
+                    </div>
+                    <div class="problem-card">
+                        <h3>HOANG MANG VÀ SỢ HÃI CÔNG NGHỆ</h3>
+                        <p>Cảm thấy mình lạc hậu trước "cơn bão" AI. Lo lắng bị công nghệ bỏ lại phía sau, không biết bắt đầu từ đâu giữa một rừng thông tin.</p>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="faq" class="container">
-             <h2 class="section-title fade-in">Câu Hỏi Thường Gặp</h2>
-             <div class="faq-container">
-                <details class="fade-in">
-                    <summary>Sản phẩm của bạn có thực sự là hữu cơ không?</summary>
-                    <p>Chúng tôi cam kết 100%. Tất cả các nông trại đối tác đều có chứng nhận VietGAP hoặc GlobalGAP. Bạn có thể kiểm tra thông tin chi tiết qua mã QR trên mỗi sản phẩm.</p>
-                </details>
-                <details class="fade-in">
-                    <summary>Phí vận chuyển được tính như thế nào?</summary>
-                    <p>Chúng tôi miễn phí vận chuyển cho đơn hàng đầu tiên và các đơn hàng từ 500.000đ. Với các đơn hàng khác, phí ship nội thành đồng giá 25.000đ.</p>
-                </details>
-                 <details class="fade-in">
-                    <summary>Nếu tôi không hài lòng với sản phẩm thì sao?</summary>
-                    <p>Chúng tôi có chính sách "1 đổi 1 hoặc hoàn tiền 100%" nếu sản phẩm không đảm bảo độ tươi ngon khi đến tay bạn. Vui lòng liên hệ hotline trong vòng 2 giờ kể từ khi nhận hàng.</p>
-                </details>
-             </div>
+
+        <section id="solution">
+            <div class="container">
+                <h2 class="section-title">💡 Đã Đến Lúc Biến AI Từ "Kẻ Ngáng Đường" Thành "Trợ Lý Đắc Lực"</h2>
+                <h3 class="course-name">Giới thiệu giải pháp: KHÓA HỌC ONLINE "AI TOÀN NĂNG CHO GIÁO VIÊN"</h3>
+                <p>Đây không phải là một khóa học lý thuyết mơ hồ. Đây là tấm vé "thực chiến" giúp thầy cô đi từ "Zero" (lơ mơ) đến "Hero" (làm chủ), biến các công cụ AI mạnh nhất (ChatGPT, Gemini, Canva AI...) thành trợ lý 24/7 của mình.</p>
+                <p>Khóa học này được thiết kế dành riêng cho giáo viên, tập trung vào việc giải quyết các công việc hàng ngày của nhà giáo.</p>
+            </div>
+        </section>
+
+        <section id="benefits">
+            <div class="container">
+                <h2 class="section-title">🚀 Thầy Cô Sẽ Nhận Được Gì Ngay Sau Khóa Học?</h2>
+                <ul class="benefit-list">
+                    <li>
+                        <h4>LẤY LẠI 10 GIỜ RẢNH MỖI TUẦN</h4>
+                        <p>Tự động hóa 80% công việc soạn thảo giáo án, tạo câu hỏi quiz, và viết báo cáo. Dùng thời gian đó để nghỉ ngơi, chăm sóc gia đình hoặc nâng cao chuyên môn.</p>
+                    </li>
+                    <li>
+                        <h4>SÁNG TẠO BÀI GIẢNG "GÂY NGHIỆN"</h4>
+                        <p>Biến slide khô khan thành video hoạt hình, ảnh minh họa chuyên nghiệp chỉ trong 5 phút – ngay cả khi thầy cô không rành về thiết kế. Học sinh sẽ hào hứng hơn bao giờ hết.</p>
+                    </li>
+                    <li>
+                        <h4>TRỞ THÀNH GIÁO VIÊN 4.0 TIÊN PHONG</h4>
+                        <p>Gây ấn tượng mạnh với học sinh, đồng nghiệp và ban giám hiệu. Không còn là người "ngoài cuộc" với công nghệ, mà là người dẫn đầu xu hướng.</p>
+                    </li>
+                    <li>
+                        <h4>TỰ TIN LÀM CHỦ, KHÔNG CÒN SỢ HÃI</h4>
+                        <p>Hiểu rõ cách AI vận hành, biến nó thành công cụ để cá nhân hóa lộ trình học cho học sinh, giúp các em tiến bộ vượt bậc.</p>
+                    </li>
+                </ul>
+                <a href="#final-cta" class="cta-button">TÔI MUỐN GIẢI PHÓNG THỜI GIAN NGAY!</a>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <h2 class="section-title">📚 Lộ Trình Khóa Học (Học Gì?)</h2>
+                <div class="modules">
+                    <div class="module-item">
+                        <h3>Học phần 1: Tư Duy Đúng - Giải Mã AI Trong Lớp Học</h3>
+                        <ul>
+                            <li>AI là gì? Tại sao giáo viên KHÔNG BAO GIỜ bị thay thế?</li>
+                            <li>Tư duy ứng dụng AI để giảm tải công việc, không phải để đối phó.</li>
+                        </ul>
+                    </div>
+                    <div class="module-item">
+                        <h3>Học phần 2: Thực Chiến 5 'Trợ Lý AI' Hàng Đầu (ChatGPT, Gemini...)</h3>
+                        <ul>
+                            <li>Kỹ thuật "ra lệnh" (prompt) chuẩn để AI viết giáo án thay bạn.</li>
+                            <li>Cách dùng AI để tạo đề thi, quiz, câu hỏi trắc nghiệm trong 1 phút.</li>
+                        </ul>
+                    </div>
+                    <div class="module-item">
+                        <h3>Học phần 3: Bậc Thầy Thiết Kế Bài Giảng (Canva AI, Midjourney)</h3>
+                        <ul>
+                            <li>Biến ý tưởng thành hình ảnh minh họa đẹp mắt (kể cả khi bạn không biết vẽ).</li>
+                            <li>Tự động tạo slide thuyết trình (PowerPoint, Canva) chuyên nghiệp.</li>
+                            <li>Cách tạo video bài giảng ngắn bằng AI.</li>
+                        </ul>
+                    </div>
+                    <div class="module-item">
+                        <h3>Học phần 4: Tự Động Hóa Chấm Bài & Cá Nhân Hóa Lộ Trình Học</h3>
+                        <ul>
+                            <li>Sử dụng AI để chấm bài và đưa ra phản hồi chi tiết cho học sinh.</li>
+                            <li>Phân tích dữ liệu học tập để phát hiện lỗ hổng kiến thức của từng em.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="who-is-this-for">
+            <div class="container">
+                <h2 class="section-title">🎯 Khóa Học Này Dành Cho Ai?</h2>
+                <ul class="audience-list">
+                    <li>Giáo viên, giảng viên các cấp muốn giảm tải công việc hành chính.</li>
+                    <li>Nhà quản lý giáo dục, hiệu trưởng muốn cập nhật công nghệ cho tổ chức.</li>
+                    <li>Sinh viên sư phạm muốn trang bị vũ khí cạnh tranh trước khi ra trường.</li>
+                    <li>Bất kỳ ai làm trong ngành giáo dục và không muốn bị "tụt hậu" bởi AI.</li>
+                </ul>
+            </div>
         </section>
 
         <section id="final-cta">
-            <div class="container fade-in">
-                <h2>Sẵn Sàng Cho Bữa Ăn An Toàn & Bổ Dưỡng?</h2>
-                <p>Nhận ngay ưu đãi 10% cho đơn hàng đầu tiên của bạn!</p>
-                <a href="#products" class="cta-button">Chọn Mua Ngay!</a>
+            <div class="container">
+                <h2 class="section-title">💯 Đừng Chần Chừ Để Người Khác Vượt Lên!</h2>
+                <p>Công nghệ không chờ đợi bất kỳ ai. Hôm nay thầy cô có thể thấy AI là một rắc rối, nhưng ngày mai nó sẽ là yêu cầu bắt buộc.</p>
+                
+                <div class="pricing-box">
+                    <h3>ƯU ĐÃI KHAI GIẢNG ĐỘC QUYỀN</h3>
+                    <p class="limitation">(Chỉ dành cho 50 giáo viên đăng ký đầu tiên)</p>
+                    <p class="old-price">2.000.000đ</p>
+                    <p class="new-price">999.000 VNĐ</p>
+                    
+                    <div class="bonus-box">
+                        <h4>TẶNG KÈM NGAY:</h4>
+                        <p>Bộ 100 Câu Lệnh (Prompt) Vàng Dành Riêng Cho Giáo Viên (Trị giá 500.000đ)</p>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">(Chỉ cần copy và dán là có ngay giáo án, đề thi, hình ảnh...)</p>
+                    </div>
+                </div>
+
+                <a href="#" class="cta-button final">ĐĂNG KÝ HỌC NGAY - CHỈ CÒN 999.000Đ</a>
+                <p class="guarantee">Cam kết hoàn tiền 100% trong 7 ngày nếu thầy cô cảm thấy khóa học không giá trị.</p>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <h3>Nông Sản Sạch</h3>
-                <p>Địa chỉ: 123 Đường ABC, Quận XYZ, Thành phố HCM</p>
-                <p>Hotline: 1900 1234 - Email: info@nongsansach.vn</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Nông Sản Sạch. All rights reserved.</p>
-            </div>
+            <p>© 2025 Khóa học AI Toàn Năng Cho Giáo Viên. Mọi quyền được bảo lưu.</p>
         </div>
     </footer>
 
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3 id="modalTitle">Thông tin đặt hàng</h3>
-            <form id="orderForm" action="https://formspree.io/f/myznvqar" method="POST">
-                <input type="hidden" id="productNameInput" name="productName">
-                <div class="form-group">
-                    <label for="fullName">Họ và Tên:</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Nguyễn Văn An" required>
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber">Số Điện Thoại:</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="09xxxxxxxx" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Địa Chỉ Giao Hàng:</label>
-                    <input type="text" id="address" name="address" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố" required>
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Số Lượng:</label>
-                    <input type="number" id="quantity" name="quantity" value="1" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="notes">Ghi Chú (tùy chọn):</label>
-                    <textarea id="notes" name="notes" rows="3" placeholder="Ví dụ: Giao hàng sau 18h"></textarea>
-                </div>
-                <button type="submit" class="cta-button form-submit-button">Xác Nhận Đặt Hàng</button>
-            </form>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
 </body>
 </html>
