@@ -7,15 +7,16 @@
     <style>
         /* CSS Biến & Thiết Lập Cơ Bản */
         :root {
-            --primary-color: #007bff; /* Màu xanh dương chủ đạo */
-            --secondary-color: #ff6a00; /* Màu cam cho CTA */
-            --final-cta-color: #e63946; /* Màu đỏ nổi bật cho CTA cuối */
-            --dark-text: #333;
-            --light-text: #555;
-            --bg-light: #f9f9f9;
-            --border-color: #ddd;
+            /* Bảng màu chuyên nghiệp hơn */
+            --primary-color: #0056b3; /* Xanh dương đậm, đáng tin cậy */
+            --secondary-color: #ff6a00; /* Cam (giữ nguyên làm điểm nhấn) */
+            --success-color: #28a745;  /* Xanh lá cho hành động 'thành công' */
+            --dark-text: #212529;
+            --light-text: #495057;
+            --bg-light: #f8f9fa; /* Màu nền xám rất nhạt */
+            --border-color: #dee2e6;
             --white: #ffffff;
-            --shadow: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
         * {
@@ -24,7 +25,6 @@
             box-sizing: border-box;
         }
 
-        /* Thêm hiệu ứng cuộn mượt mà */
         html {
             scroll-behavior: smooth;
         }
@@ -72,23 +72,26 @@
             font-weight: 700;
             text-decoration: none;
             border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            /* Hiệu ứng chuyển động mượt mà */
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 106, 0, 0.3);
             text-transform: uppercase;
-            border: none; /* Dành cho nút submit */
-            cursor: pointer; /* Dành cho nút submit */
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
             background-color: #e05c00;
-            transform: translateY(-2px);
+            transform: translateY(-3px); /* Nâng nút lên một chút */
+            box-shadow: 0 6px 20px rgba(255, 106, 0, 0.4);
         }
 
         /* --- KHU VỰC 1: HERO --- */
         #hero {
             text-align: center;
             padding: 60px 20px;
-            background-color: var(--bg-light);
+            background-color: var(--bg-light); /* Dùng màu nền xám nhạt */
+            border-bottom: 1px solid var(--border-color);
         }
 
         #hero h1 {
@@ -127,7 +130,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #28a745; /* Màu xanh lá */
+            color: var(--success-color); /* Dùng màu success */
         }
 
         /* --- KHU VỰC 2: NỖI ĐAU --- */
@@ -148,10 +151,16 @@
             border-radius: 8px;
             padding: 25px;
             box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
         }
 
         .problem-card h3 {
-            color: var(--final-cta-color);
+            color: #e63946; /* Giữ màu đỏ cho 'nỗi đau' */
             font-size: 1.2rem;
         }
 
@@ -165,7 +174,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary-color);
-            background: #e0eaff;
+            background: #e6f0ff; /* Màu nền nhạt của màu primary */
             padding: 10px 20px;
             border-radius: 8px;
             display: inline-block;
@@ -269,6 +278,7 @@
             margin-bottom: 10px;
             border-radius: 8px;
             position: relative;
+            border: 1px solid var(--border-color);
         }
         
         .audience-list li::before {
@@ -281,7 +291,7 @@
 
         /* --- KHU VỰC 7: FINAL CTA --- */
         #final-cta {
-            background-color: #3a4a6e; /* Màu xanh đậm */
+            background-color: #2a3b5a; /* Màu xanh navy đậm */
             color: var(--white);
             text-align: center;
         }
@@ -314,7 +324,7 @@
         
         .pricing-box .limitation {
             font-style: italic;
-            color: var(--final-cta-color);
+            color: #e63946;
             font-weight: 500;
         }
 
@@ -328,7 +338,7 @@
         .pricing-box .new-price {
             font-size: 3rem;
             font-weight: 700;
-            color: var(--final-cta-color);
+            color: #e63946;
             margin: 0 0 15px 0;
         }
         
@@ -339,7 +349,7 @@
         }
 
         .bonus-box h4 {
-            color: #28a745; /* Xanh lá */
+            color: var(--success-color); /* Dùng màu success */
             font-size: 1.2rem;
         }
         
@@ -348,30 +358,18 @@
             font-weight: 500;
             margin: 0;
         }
-
-        .cta-button.final {
-            background-color: var(--final-cta-color);
-            font-size: 1.5rem;
-            padding: 20px 40px;
-            margin-top: 20px;
-            box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
-        }
         
-        .cta-button.final:hover {
-            background-color: #c9302c;
-        }
-        
-        /* ===== BẮT ĐẦU CSS CHO FORM (MỚI THÊM) ===== */
+        /* --- CSS CHO FORM (Đã tinh chỉnh) --- */
         
         #registration-form-container {
             background: var(--white);
             color: var(--dark-text);
             padding: 30px;
             border-radius: 10px;
-            max-width: 500px; /* Quan trọng: Giữ form gọn gàng trên desktop */
-            margin: 40px auto 20px auto; /* Tách form ra khỏi pricing-box */
+            max-width: 500px;
+            margin: 40px auto 20px auto;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            text-align: left; /* Căn lề trái cho nội dung form */
+            text-align: left;
         }
 
         #registration-form-container h3 {
@@ -393,31 +391,37 @@
         }
 
         .form-group input {
-            width: 100%; /* Quan trọng: Giúp form hiển thị 100% trên mobile */
+            width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
             border-radius: 5px;
             font-size: 1rem;
-            font-family: inherit; /* Đảm bảo font nhất quán */
+            font-family: inherit;
+            transition: all 0.3s ease;
         }
         
         .form-group input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
             outline: none;
         }
 
-        /* Áp dụng cho nút submit bên trong form */
+        /* Nút submit cuối cùng (Màu xanh lá) */
         .cta-button.final[type="submit"] {
-            width: 100%; /* Nút submit chiếm toàn bộ chiều rộng form */
+            width: 100%;
             margin-top: 10px;
             font-size: 1.2rem;
             padding: 15px;
+            background-color: var(--success-color);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
         }
         
-        /* ===== KẾT THÚC CSS CHO FORM ===== */
-
-
+        .cta-button.final[type="submit"]:hover {
+            background-color: #218838;
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+            transform: translateY(-3px);
+        }
+        
         .guarantee {
             font-size: 0.9rem;
             font-style: italic;
@@ -455,8 +459,6 @@
             h2.section-title {
                 font-size: 1.8rem;
             }
-            
-            /* Form đã tự động responsive do dùng width: 100% và max-width */
         }
 
     </style>
@@ -467,9 +469,7 @@
         <div class="container">
             <h1>🐲 HẾT CẢNH SOẠN GIÁO ÁN ĐẾN KHUYA!</h1>
             <p class="subtitle">Biến AI Thành Trợ Lý Thông Minh: Tự Động Hóa 80% Việc Hành Chính & Nâng Cấp Bài Giảng Lên 200%</p>
-            
             <a href="#dang-ky" class="cta-button">ĐĂNG KÝ HỌC NGAY (Ưu đãi 50%)</a>
-            
             <ul class="sub-benefits">
                 <li>Học online 100%</li>
                 <li>Thực hành cầm tay chỉ việc</li>
@@ -529,7 +529,6 @@
                         <p>Hiểu rõ cách AI vận hành, biến nó thành công cụ để cá nhân hóa lộ trình học cho học sinh, giúp các em tiến bộ vượt bậc.</p>
                     </li>
                 </ul>
-                
                 <a href="#dang-ky" class="cta-button">TÔI MUỐN GIẢI PHÓNG THỜI GIAN NGAY!</a>
             </div>
         </section>
@@ -603,25 +602,28 @@
 
                 <div id="registration-form-container">
                     
-                    <form action="#" method="POST" id="dang-ky"> 
+                    <form id="dang-ky" action="https://formsubmit.co/nguyenhoanghuy118@gmail.com" method="POST"> 
+                        
                         <h3>Đăng Ký Ngay Để Giữ Chỗ</h3>
                         
                         <div class="form-group">
                             <label for="ho-ten">Họ và Tên:</label>
-                            <input type="text" id="ho-ten" name="ho_ten" placeholder="Nguyễn Văn A" required>
+                            <input type="text" id="ho-ten" name="Họ tên" placeholder="Nguyễn Văn A" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" placeholder="thayco@truonghoc.edu.vn" required>
+                            <input type="email" id="email" name="Email" placeholder="thayco@truonghoc.edu.vn" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="so-dien-thoai">Số điện thoại:</label>
-                            <input type="tel" id="so-dien-thoai" name="so_dien_thoai" placeholder="0912345678" required>
+                            <input type="tel" id="so-dien-thoai" name="Số điện thoại" placeholder="0912345678" required>
                         </div>
-                        
-                        <button type="submit" class="cta-button final">
+
+                        <input type="hidden" name="_subject" value="Đăng Ký Mới - Khóa Học AI Cho Giáo Viên">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="URL_TRANG_CAM_ON_CUA_BAN"> <button type="submit" class="cta-button final">
                             ĐĂNG KÝ HỌC NGAY - CHỈ CÒN 999.000Đ
                         </button>
                     </form>
