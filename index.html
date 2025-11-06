@@ -24,6 +24,11 @@
             box-sizing: border-box;
         }
 
+        /* Thêm hiệu ứng cuộn mượt mà */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.7;
@@ -70,6 +75,8 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 106, 0, 0.3);
             text-transform: uppercase;
+            border: none; /* Dành cho nút submit */
+            cursor: pointer; /* Dành cho nút submit */
         }
 
         .cta-button:hover {
@@ -353,6 +360,63 @@
         .cta-button.final:hover {
             background-color: #c9302c;
         }
+        
+        /* ===== BẮT ĐẦU CSS CHO FORM (MỚI THÊM) ===== */
+        
+        #registration-form-container {
+            background: var(--white);
+            color: var(--dark-text);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px; /* Quan trọng: Giữ form gọn gàng trên desktop */
+            margin: 40px auto 20px auto; /* Tách form ra khỏi pricing-box */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            text-align: left; /* Căn lề trái cho nội dung form */
+        }
+
+        #registration-form-container h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        .form-group input {
+            width: 100%; /* Quan trọng: Giúp form hiển thị 100% trên mobile */
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit; /* Đảm bảo font nhất quán */
+        }
+        
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+            outline: none;
+        }
+
+        /* Áp dụng cho nút submit bên trong form */
+        .cta-button.final[type="submit"] {
+            width: 100%; /* Nút submit chiếm toàn bộ chiều rộng form */
+            margin-top: 10px;
+            font-size: 1.2rem;
+            padding: 15px;
+        }
+        
+        /* ===== KẾT THÚC CSS CHO FORM ===== */
+
 
         .guarantee {
             font-size: 0.9rem;
@@ -392,10 +456,7 @@
                 font-size: 1.8rem;
             }
             
-            .cta-button.final {
-                font-size: 1.2rem;
-                padding: 15px 30px;
-            }
+            /* Form đã tự động responsive do dùng width: 100% và max-width */
         }
 
     </style>
@@ -406,7 +467,9 @@
         <div class="container">
             <h1>🐲 HẾT CẢNH SOẠN GIÁO ÁN ĐẾN KHUYA!</h1>
             <p class="subtitle">Biến AI Thành Trợ Lý Thông Minh: Tự Động Hóa 80% Việc Hành Chính & Nâng Cấp Bài Giảng Lên 200%</p>
-            <a href="#final-cta" class="cta-button">ĐĂNG KÝ HỌC NGAY (Ưu đãi 50%)</a>
+            
+            <a href="#dang-ky" class="cta-button">ĐĂNG KÝ HỌC NGAY (Ưu đãi 50%)</a>
+            
             <ul class="sub-benefits">
                 <li>Học online 100%</li>
                 <li>Thực hành cầm tay chỉ việc</li>
@@ -466,7 +529,8 @@
                         <p>Hiểu rõ cách AI vận hành, biến nó thành công cụ để cá nhân hóa lộ trình học cho học sinh, giúp các em tiến bộ vượt bậc.</p>
                     </li>
                 </ul>
-                <a href="#final-cta" class="cta-button">TÔI MUỐN GIẢI PHÓNG THỜI GIAN NGAY!</a>
+                
+                <a href="#dang-ky" class="cta-button">TÔI MUỐN GIẢI PHÓNG THỜI GIAN NGAY!</a>
             </div>
         </section>
 
@@ -537,7 +601,31 @@
                     </div>
                 </div>
 
-                <a href="#" class="cta-button final">ĐĂNG KÝ HỌC NGAY - CHỈ CÒN 999.000Đ</a>
+                <div id="registration-form-container">
+                    
+                    <form action="#" method="POST" id="dang-ky"> 
+                        <h3>Đăng Ký Ngay Để Giữ Chỗ</h3>
+                        
+                        <div class="form-group">
+                            <label for="ho-ten">Họ và Tên:</label>
+                            <input type="text" id="ho-ten" name="ho_ten" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="thayco@truonghoc.edu.vn" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="so-dien-thoai">Số điện thoại:</label>
+                            <input type="tel" id="so-dien-thoai" name="so_dien_thoai" placeholder="0912345678" required>
+                        </div>
+                        
+                        <button type="submit" class="cta-button final">
+                            ĐĂNG KÝ HỌC NGAY - CHỈ CÒN 999.000Đ
+                        </button>
+                    </form>
+                </div>
                 <p class="guarantee">Cam kết hoàn tiền 100% trong 7 ngày nếu thầy cô cảm thấy khóa học không giá trị.</p>
             </div>
         </section>
