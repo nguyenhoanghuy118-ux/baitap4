@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khóa Học AI Toàn Năng Cho Giáo Viên</title>
     <style>
-        /* CSS Biến & Thiết Lập Cơ Bản */
+        /* * CSS ĐÃ ĐƯỢC THIẾT KẾ LẠI DỰA TRÊN MẪU LOGISCOOL
+         */
+
         :root {
-            /* Bảng màu chuyên nghiệp hơn */
-            --primary-color: #0056b3; /* Xanh dương đậm, đáng tin cậy */
-            --secondary-color: #ff6a00; /* Cam (giữ nguyên làm điểm nhấn) */
-            --success-color: #28a745;  /* Xanh lá cho hành động 'thành công' */
-            --dark-text: #212529;
-            --light-text: #495057;
-            --bg-light: #f8f9fa; /* Màu nền xám rất nhạt */
-            --border-color: #dee2e6;
+            /* Màu sắc lấy cảm hứng từ Logiscool */
+            --primary-color: #98c547; /* Xanh lá mạ */
+            --dark-color: #2d3e50;    /* Xanh than đậm */
+            --light-gray: #f9f9f9;   /* Xám nhạt cho nền */
+            --text-color: #333;
+            --light-text: #555;
+            --border-color: #e0e0e0;
             --white: #ffffff;
-            --shadow: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow: 0 5px 15px rgba(0,0,0,0.08); /* Bóng đổ nhẹ */
         }
 
         * {
@@ -30,31 +31,32 @@
         }
 
         body {
+            /* Font chữ hiện đại, sạch sẽ như Logiscool */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.7;
-            color: var(--dark-text);
+            color: var(--text-color);
             background-color: var(--white);
         }
 
-        /* Container Chính */
+        /* Container rộng hơn, giống mẫu */
         .container {
-            max-width: 960px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         /* Tiêu Đề Chung */
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4 {
             line-height: 1.3;
             margin-bottom: 15px;
             font-weight: 700;
+            color: var(--dark-color); /* Dùng màu xanh than */
         }
 
         h2.section-title {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             text-align: center;
-            margin-bottom: 40px;
-            color: var(--primary-color);
+            margin-bottom: 50px;
         }
 
         p {
@@ -62,47 +64,45 @@
             color: var(--light-text);
         }
 
-        /* Nút Kêu Gọi Hành Động (CTA) */
+        /* * NÚT CTA THEO PHONG CÁCH LOGISCOOL (QUAN TRỌNG)
+         * Bo tròn hình "viên thuốc", màu xanh lá
+         */
         .cta-button {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: var(--white);
-            padding: 15px 30px;
+            padding: 15px 35px; /* Dài hơn một chút */
             font-size: 1.1rem;
             font-weight: 700;
             text-decoration: none;
-            border-radius: 8px;
-            /* Hiệu ứng chuyển động mượt mà */
+            border-radius: 50px; /* Bo tròn hoàn toàn */
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 106, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(152, 197, 71, 0.4);
             text-transform: uppercase;
             border: none;
             cursor: pointer;
         }
 
         .cta-button:hover {
-            background-color: #e05c00;
-            transform: translateY(-3px); /* Nâng nút lên một chút */
-            box-shadow: 0 6px 20px rgba(255, 106, 0, 0.4);
+            background-color: #89b040; /* Đậm hơn khi hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(152, 197, 71, 0.5);
         }
 
         /* --- KHU VỰC 1: HERO --- */
         #hero {
             text-align: center;
             padding: 60px 20px;
-            background-color: var(--bg-light); /* Dùng màu nền xám nhạt */
-            border-bottom: 1px solid var(--border-color);
+            background-color: var(--light-gray); /* Nền xám nhạt */
         }
 
         #hero h1 {
-            font-size: 3rem;
-            color: var(--dark-text);
-            margin-bottom: 20px;
+            font-size: 3.2rem;
         }
 
         #hero .subtitle {
-            font-size: 1.3rem;
-            color: var(--primary-color);
+            font-size: 1.4rem;
+            color: var(--dark-color); /* Đổi màu cho dễ đọc hơn */
             font-weight: 500;
             max-width: 700px;
             margin: 0 auto 30px auto;
@@ -118,6 +118,7 @@
             gap: 30px;
             list-style: none;
             font-weight: 500;
+            color: var(--dark-color);
         }
 
         .sub-benefits li {
@@ -126,29 +127,30 @@
         }
 
         .sub-benefits li::before {
-            content: '✔';
+            content: '✔'; /* Dùng icon check sạch sẽ */
             position: absolute;
             left: 0;
             top: 0;
-            color: var(--success-color); /* Dùng màu success */
+            color: var(--primary-color);
         }
 
-        /* --- KHU VỰC 2: NỖI ĐAU --- */
+        /* --- KHU VỰC 2: NỖI ĐAU (DÙNG BỐ CỤC THẺ) --- */
         #problem {
             background-color: var(--white);
         }
         
         .problem-cards {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
         }
 
+        /* Thẻ "Card" như mẫu Logiscool */
         .problem-card {
-            flex-basis: 300px;
+            flex: 1;
             background: var(--white);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px; /* Bo góc ít hơn */
             padding: 25px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
@@ -156,7 +158,7 @@
 
         .problem-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .problem-card h3 {
@@ -166,15 +168,15 @@
 
         /* --- KHU VỰC 3: GIẢI PHÁP --- */
         #solution {
-            background-color: var(--bg-light);
+            background-color: var(--light-gray); /* Nền xám xen kẽ */
             text-align: center;
         }
 
         #solution .course-name {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
-            background: #e6f0ff; /* Màu nền nhạt của màu primary */
+            color: var(--dark-color);
+            background: #e4f0d0; /* Nền xanh lá rất nhạt */
             padding: 10px 20px;
             border-radius: 8px;
             display: inline-block;
@@ -185,6 +187,7 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.1rem;
         }
 
         /* --- KHU VỰC 4: LỢI ÍCH --- */
@@ -200,8 +203,8 @@
 
         .benefit-list li {
             font-size: 1.1rem;
-            margin-bottom: 20px;
-            padding-left: 35px;
+            margin-bottom: 25px;
+            padding-left: 40px; /* Thêm khoảng cách */
             position: relative;
         }
         
@@ -209,13 +212,13 @@
             content: '✅';
             position: absolute;
             left: 0;
-            top: 0;
-            font-size: 1.2rem;
+            top: -2px;
+            font-size: 1.3rem;
         }
         
         .benefit-list li h4 {
             margin: 0;
-            color: var(--dark-text);
+            font-size: 1.2rem;
         }
         
         .benefit-list li p {
@@ -229,9 +232,9 @@
             margin: 20px auto 0 auto;
         }
 
-        /* --- KHU VỰC 5: TÍNH NĂNG --- */
+        /* --- KHU VỰC 5: TÍNH NĂNG (DÙNG BỐ CỤC THẺ) --- */
         #features {
-            background-color: var(--bg-light);
+            background-color: var(--light-gray);
         }
 
         .modules {
@@ -243,22 +246,26 @@
         .module-item {
             background: var(--white);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
+            border-radius: 10px;
+            padding: 30px;
             box-shadow: var(--shadow);
+            display: flex; /* Mới: Bố cục 2 cột */
+            gap: 20px;
+            align-items: flex-start;
         }
 
         .module-item h3 {
             color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            display: inline-block;
+            margin: 0;
+            flex-basis: 30%; /* Cột tiêu đề chiếm 30% */
+            font-size: 1.3rem;
         }
 
         .module-item ul {
             list-style: disc;
             margin-left: 20px;
             color: var(--light-text);
+            flex-basis: 70%; /* Cột nội dung 70% */
         }
 
         /* --- KHU VỰC 6: ĐỐI TƯỢNG --- */
@@ -270,15 +277,18 @@
             list-style: none;
             max-width: 700px;
             margin: 0 auto;
+            display: flex; /* Flexbox cho các item */
+            flex-wrap: wrap; /* Cho phép xuống hàng */
+            gap: 15px;
         }
 
         .audience-list li {
-            background: var(--bg-light);
+            background: var(--light-gray);
             padding: 15px 20px 15px 45px;
-            margin-bottom: 10px;
             border-radius: 8px;
             position: relative;
             border: 1px solid var(--border-color);
+            flex: 1 1 300px; /* Tự động co dãn */
         }
         
         .audience-list li::before {
@@ -291,7 +301,7 @@
 
         /* --- KHU VỰC 7: FINAL CTA --- */
         #final-cta {
-            background-color: #2a3b5a; /* Màu xanh navy đậm */
+            background-color: var(--dark-color); /* Nền xanh than */
             color: var(--white);
             text-align: center;
         }
@@ -307,9 +317,10 @@
             margin-right: auto;
         }
 
+        /* Hộp giá "nổi" lên trên nền */
         .pricing-box {
             background: var(--white);
-            color: var(--dark-text);
+            color: var(--text-color);
             padding: 30px;
             border-radius: 10px;
             max-width: 500px;
@@ -318,7 +329,7 @@
         }
         
         .pricing-box h3 {
-            color: var(--primary-color);
+            color: var(--dark-color);
             font-size: 1.4rem;
         }
         
@@ -349,21 +360,21 @@
         }
 
         .bonus-box h4 {
-            color: var(--success-color); /* Dùng màu success */
+            color: var(--primary-color); /* Màu xanh lá cho bonus */
             font-size: 1.2rem;
         }
         
         .bonus-box p {
-            color: var(--dark-text);
+            color: var(--text-color);
             font-weight: 500;
             margin: 0;
         }
         
-        /* --- CSS CHO FORM (Đã tinh chỉnh) --- */
+        /* --- CSS CHO FORM (Thiết kế sạch sẽ) --- */
         
         #registration-form-container {
             background: var(--white);
-            color: var(--dark-text);
+            color: var(--text-color);
             padding: 30px;
             border-radius: 10px;
             max-width: 500px;
@@ -374,7 +385,7 @@
 
         #registration-form-container h3 {
             text-align: center;
-            color: var(--primary-color);
+            color: var(--dark-color);
             margin-bottom: 25px;
             font-size: 1.6rem;
         }
@@ -387,14 +398,14 @@
             display: block;
             font-weight: 600;
             margin-bottom: 5px;
-            color: var(--dark-text);
+            color: var(--dark-color);
         }
 
         .form-group input {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
-            border-radius: 5px;
+            border-radius: 8px; /* Bo góc nhẹ */
             font-size: 1rem;
             font-family: inherit;
             transition: all 0.3s ease;
@@ -402,24 +413,16 @@
         
         .form-group input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+            box-shadow: 0 0 0 3px rgba(152, 197, 71, 0.2);
             outline: none;
         }
 
-        /* Nút submit cuối cùng (Màu xanh lá) */
-        .cta-button.final[type="submit"] {
+        /* Nút submit (dùng lại style .cta-button) */
+        .cta-button.final-submit[type="submit"] {
             width: 100%;
             margin-top: 10px;
             font-size: 1.2rem;
             padding: 15px;
-            background-color: var(--success-color);
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-        }
-        
-        .cta-button.final[type="submit"]:hover {
-            background-color: #218838;
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
-            transform: translateY(-3px);
         }
         
         .guarantee {
@@ -432,8 +435,9 @@
         footer {
             text-align: center;
             padding: 30px 20px;
-            background: var(--dark-text);
-            color: #aaa;
+            background: #eee;
+            color: #777;
+            border-top: 1px solid var(--border-color);
         }
         
         /* --- RESPONSIVE DESIGN --- */
@@ -458,6 +462,21 @@
             
             h2.section-title {
                 font-size: 1.8rem;
+            }
+
+            .module-item {
+                flex-direction: column; /* Xếp chồng trên di động */
+                gap: 10px;
+            }
+
+            .module-item h3 {
+                flex-basis: auto;
+                border-bottom: 2px solid var(--primary-color);
+                padding-bottom: 5px;
+            }
+
+            .module-item ul {
+                flex-basis: auto;
             }
         }
 
@@ -602,7 +621,7 @@
 
                 <div id="registration-form-container">
                     
-                    <form id="dang-ky" action="https://formsubmit.co/nguyenhoanghuy118@gmail.com" method="POST"> 
+                    <form id="dang-ky" action="https://formsubmit.co/thayco@email.com" method="POST"> 
                         
                         <h3>Đăng Ký Ngay Để Giữ Chỗ</h3>
                         
@@ -623,7 +642,7 @@
 
                         <input type="hidden" name="_subject" value="Đăng Ký Mới - Khóa Học AI Cho Giáo Viên">
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="URL_TRANG_CAM_ON_CUA_BAN"> <button type="submit" class="cta-button final">
+                        <button type="submit" class="cta-button final-submit">
                             ĐĂNG KÝ HỌC NGAY - CHỈ CÒN 999.000Đ
                         </button>
                     </form>
@@ -634,7 +653,7 @@
     </main>
 
     <footer>
-        <div class="container">
+        <div class="container" style="padding: 30px 20px;">
             <p>© 2025 Khóa học AI Toàn Năng Cho Giáo Viên. Mọi quyền được bảo lưu.</p>
         </div>
     </footer>
