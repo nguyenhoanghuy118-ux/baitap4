@@ -172,42 +172,76 @@
             color: var(--primary-color);
         }
         
-        /* --- KHU VỰC "ĐÃ NÓI VỀ KHÓA HỌC" (MỚI) --- */
-        #social-proof {
-            background-color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
+        /* --- KHU VỰC "ĐÁNH GIÁ TỪ THẦY CÔ" (MỚI THAY THẾ) --- */
+        #testimonials {
+            background-color: var(--white); /* Nền trắng */
             border-bottom: 1px solid var(--border-color);
         }
 
-        #social-proof h3 {
-            font-size: 1.6rem;
-            color: var(--dark-color);
-            margin-bottom: 30px;
-        }
-
-        .logos-grid {
+        .testimonial-grid {
             display: flex;
-            flex-wrap: wrap;
+            gap: 25px;
             justify-content: center;
-            gap: 40px;
-            align-items: center;
         }
 
-        .logo-item {
-            height: 60px; /* Chiều cao cố định cho logo */
-            width: auto;
-            max-width: 150px;
-            filter: grayscale(100%); /* Làm mờ logo */
-            opacity: 0.6;
+        .testimonial-card {
+            flex: 1;
+            background: var(--light-gray); /* Nền xám nhạt cho thẻ */
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column; /* Xếp chồng nội dung */
             transition: all 0.3s ease;
         }
-
-        .logo-item:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.05);
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            color: var(--light-text);
+            flex-grow: 1; /* Giúp các thẻ có chiều cao bằng nhau */
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 35px; /* Chỗ cho icon quote */
+            font-size: 1.05rem;
+        }
+        
+        /* Icon trích dẫn */
+        .testimonial-card .quote::before {
+            content: '“';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .author-info {
+            text-align: left;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+        
+        .author-info .author-name {
+            font-weight: 700;
+            color: var(--dark-color);
+            margin: 0;
+        }
+        
+        .author-info .author-title {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin: 0;
+        }
+        /* --- KẾT THÚC KHU VỰC MỚI --- */
+
 
         /* --- KHU VỰC 2: NỖI ĐAU --- */
         #problem {
@@ -398,19 +432,51 @@
             margin-right: auto;
         }
 
-        /* ===== THAY ĐỔI ĐỂ LÀM NỔI BẬT HỘP GIÁ ===== */
+        /* --- HỘP GIÁ NỔI BẬT --- */
         .pricing-box {
-            background: var(--white);
-            color: var(--text-color);
+            background: var(--white); /* Giữ màu nền ban đầu để dễ dàng áp dụng overlay */
+            color: var(--white); /* Chữ màu trắng */
             padding: 30px;
             border-radius: 10px;
             max-width: 500px;
             margin: 30px auto;
-            position: relative; /* Cần thiết cho animation */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* Quan trọng cho pseudo-elements */
+            overflow: hidden; /* Cần thiết để ảnh không tràn */
             
-            /* Áp dụng animation "rung" */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: pulse-effect 2.5s infinite ease-in-out;
+            z-index: 0; /* Đảm bảo nội dung nằm trên lớp phủ và ảnh nền */
+        }
+
+        /* Lớp phủ ảnh nền cho pricing-box */
+        .pricing-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1510525008588-66779872580c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80'); /* Thay ảnh nền của bạn */
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(80%) brightness(0.6); /* Làm ảnh xám và tối đi */
+            z-index: -2; /* Đặt dưới nội dung chính */
+        }
+        /* Lớp phủ màu để chữ nổi bật hơn trên ảnh nền */
+        .pricing-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Lớp phủ đen trong suốt 50% */
+            z-index: -1; /* Đặt trên ảnh nền nhưng dưới nội dung */
+        }
+
+        .pricing-box > * { /* Đảm bảo tất cả nội dung nằm trên lớp phủ và ảnh nền */
+            position: relative;
+            z-index: 1;
         }
 
         /* Dừng animation khi di chuột vào */
@@ -419,49 +485,55 @@
             transform: scale(1.03); /* Giữ trạng thái phóng to */
             box-shadow: 0 10px 35px rgba(230, 57, 70, 0.4); /* Giữ vầng sáng đỏ */
         }
-        /* ===== KẾT THÚC THAY ĐỔI ===== */
         
         .pricing-box h3 {
-            color: var(--dark-color);
+            color: var(--white); /* Màu trắng cho tiêu đề */
             font-size: 1.4rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
         .pricing-box .limitation {
             font-style: italic;
-            color: #e63946;
+            color: #ffda6a; /* Màu vàng nhạt cho nổi bật */
             font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .pricing-box .old-price {
             font-size: 1.5rem;
             text-decoration: line-through;
-            color: var(--light-text);
+            color: #ccc; /* Màu xám nhạt */
             margin: 10px 0 0 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .pricing-box .new-price {
             font-size: 3rem;
             font-weight: 700;
-            color: #e63946;
+            color: var(--cta-red); /* Giữ màu đỏ cho giá mới để thu hút */
             margin: 0 0 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
         
         .bonus-box {
-            border-top: 2px dashed var(--border-color);
+            border-top: 2px dashed rgba(255,255,255,0.4); /* Border trắng mờ */
             padding-top: 20px;
             margin-top: 20px;
         }
 
         .bonus-box h4 {
-            color: var(--primary-color);
+            color: var(--primary-color); /* Giữ màu xanh lá cho bonus */
             font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
         .bonus-box p {
-            color: var(--text-color);
+            color: var(--white); /* Chữ trắng cho mô tả bonus */
             font-weight: 500;
             margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
+        /* ===== KẾT THÚC HỘP GIÁ --- */
         
         /* --- CSS CHO FORM --- */
         
@@ -530,6 +602,8 @@
             font-size: 0.9rem;
             font-style: italic;
             margin-top: 20px !important;
+            color: #eee; /* Chữ trắng cho guarantee */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
         }
 
         /* --- FOOTER --- */
@@ -564,11 +638,11 @@
                 margin-bottom: 30px;
             }
 
-            .problem-cards {
+            .problem-cards, .testimonial-grid { /* Áp dụng cho cả 2 khu vực */
                 flex-direction: column;
             }
             
-            .problem-card {
+            .problem-card, .testimonial-card {
                 flex-basis: auto;
             }
             
@@ -592,18 +666,9 @@
             .module-item ul {
                 flex-basis: auto;
             }
-
-            .logos-grid {
-                gap: 20px;
-            }
-
-            .logo-item {
-                height: 50px;
-                max-width: 120px;
-            }
         }
 
-        /* ===== THÊM MỚI: KEYFRAME CHO HIỆU ỨNG NỔI BẬT ===== */
+        /* ===== KEYFRAME CHO HIỆU ỨNG NỔI BẬT ===== */
         @keyframes pulse-effect {
             0% {
                 transform: scale(1);
@@ -638,15 +703,31 @@
     </header>
 
     
-<section id="social-proof">
+    <section id="testimonials">
         <div class="container">
-            <h3>Khóa Học Này Đã Được Đánh Giá Cao Trên...</h3>
-            <div class="logos-grid">
-                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=VTV" alt="Logo VTV" class="logo-item">
-                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=VNExpress" alt="Logo VNExpress" class="logo-item">
-                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=Thanh+Niên" alt="Logo Thanh Niên" class="logo-item">
-                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=ZingNews" alt="Logo ZingNews" class="logo-item">
-                <img src="https://via.placeholder.com/150x60/f8f9fa/2d3e50?text=Giáo+Dục+Thời+Đại" alt="Logo Giáo Dục Thời Đại" class="logo-item">
+            <h2 class="section-title">Khóa Học Này Đã Được Đánh Giá Cao bởi các thầy cô</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"Thật tuyệt vời! Khóa học đã giúp tôi tiết kiệm ít nhất 10 giờ làm việc hành chính mỗi tuần. Các bài giảng AI rất dễ áp dụng."</p>
+                    <div class="author-info">
+                        <p class="author-name">Cô Nguyễn Thị Lan</p>
+                        <p class="author-title">Giáo viên Toán, Trường THPT Chuyên Hà Nội</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"Ban đầu tôi rất sợ AI, nhưng khóa học này đã thay đổi hoàn toàn tư duy của tôi. Giờ tôi có thể tự tạo video bài giảng hấp dẫn. Học sinh của tôi rất thích!"</p>
+                    <div class="author-info">
+                        <p class="author-name">Thầy Trần Văn Minh</p>
+                        <p class="author-title">Giáo viên Lịch sử, Trường THCS Lê Lợi, Đà Nẵng</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"Đây là khóa học 'thực chiến' nhất tôi từng tham gia. Các câu lệnh (prompt) được tặng kèm cực kỳ giá trị, tôi dùng hàng ngày."</p>
+                    <div class="author-info">
+                        <p class="author-name">Cô Phạm Thu Hà</p>
+                        <p class="author-title">Giáo viên Tiểu học, Q.1, TP.HCM</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -775,7 +856,7 @@
 
                 <div id="registration-form-container">
                     
-                    <form id="dang-ky" action="https://formsubmit.co/nguyenhoanghuy118@gmail.com" method="POST"> 
+                    <form id="dang-ky" action="https://formsubmit.co/thayco@email.com" method="POST"> 
                         
                         <h3>Đăng Ký Ngay Để Giữ Chỗ</h3>
                         
